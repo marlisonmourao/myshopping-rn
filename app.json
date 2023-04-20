@@ -15,6 +15,7 @@
       "**/*"
     ],
     "plugins": [
+      "@react-native-firebase/app",
       [
         "expo-image-picker",
         {
@@ -24,9 +25,11 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.marlison.myshoppingrn"
+      "bundleIdentifier": "com.marlison.myshoppingrn",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"

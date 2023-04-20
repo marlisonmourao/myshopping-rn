@@ -28,6 +28,12 @@
           <string>com.marlison.myshoppingrn</string>
         </array>
       </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>com.googleusercontent.apps.84154879421-js3rjuvs8jokrokcnogaruqsc40opm0f</string>
+        </array>
+      </dict>
     </array>
     <key>CFBundleVersion</key>
     <string>1</string>
