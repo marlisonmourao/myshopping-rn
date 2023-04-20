@@ -18,6 +18,7 @@ export function FormBox() {
         description,
         quantity,
         done: false,
+        created_at: firestore.FieldValue.serverTimestamp(),
       })
       .then(() => {
         Alert.alert('Produto adicionado com sucesso!')
