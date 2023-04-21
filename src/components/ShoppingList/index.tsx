@@ -9,12 +9,30 @@ import { Product, ProductProps } from '../Product'
 export function ShoppingList() {
   const [products, setProducts] = useState<ProductProps[]>([])
 
+  // useEffect(() => {
+  //   firestore()
+  //     .collection('products')
+  //     .get()
+  //     .then((response) => {
+  //       const data = response.docs.map((doc) => {
+  //         return {
+  //           id: doc.id,
+  //           ...doc.data(),
+  //         }
+  //       }) as ProductProps[]
+  //       setProducts(data)
+  //     })
+  //     .catch((error) => console.log(error))
+  // })
+
   useEffect(() => {
-    firestore()
+    const subscriber = firestore()
       .collection('products')
-      .get()
-      .then((response) => {
-        const data = response.docs.map((doc) => {
+      // .limit(1)
+      // .where('quantity', '==', 2)
+      .orderBy('quantity')
+      .onSnapshot((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => {
           return {
             id: doc.id,
             ...doc.data(),
@@ -22,7 +40,8 @@ export function ShoppingList() {
         }) as ProductProps[]
         setProducts(data)
       })
-      .catch((error) => console.log(error))
+
+    return () => subscriber()
   })
 
   return (
