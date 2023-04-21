@@ -33,7 +33,10 @@ export function Upload() {
 
   function handleUpload() {
     const fileName = new Date().getTime()
-    const reference = storage().ref(`/images/${fileName}.png`)
+    const MIME = image.match(/\.(?:.(?!\.))+$/)
+    const reference = storage().ref(`/images/${fileName}${MIME}`)
+
+    console.log(MIME)
 
     const upLoadTask = reference.putFile(image)
     upLoadTask.on('state_changed', (taskSnapshot) => {
