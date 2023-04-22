@@ -1,4 +1,4 @@
-import React from 'react'
+import auth from '@react-native-firebase/auth'
 
 import { Container, Account, Title, Subtitle } from './styles'
 import { ButtonText } from '../../components/ButtonText'
@@ -6,6 +6,11 @@ import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 
 export function SignIn() {
+  async function handleSignInAnonymously() {
+    const { user } = await auth().signInAnonymously()
+    console.log(user)
+  }
+
   return (
     <Container>
       <Title>MyShopping</Title>
@@ -15,7 +20,7 @@ export function SignIn() {
 
       <Input placeholder="senha" secureTextEntry />
 
-      <Button title="Entrar" onPress={() => {}} />
+      <Button title="Entrar" onPress={handleSignInAnonymously} />
 
       <Account>
         <ButtonText title="Recuperar senha" onPress={() => {}} />
